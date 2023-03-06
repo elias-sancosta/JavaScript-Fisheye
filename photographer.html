@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <!-- Google Font Family -->
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+  <!-- Style File -->
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <title>Fisheye - Photographe</title>
+</head>
+
+<body>
+  <!-- Header Section -->
+  <header>
+    <a href="index.html" tabindex="1">
+      <img src="assets/images/logo.png" class="logo" alt="Logo de FishEye" />
+    </a>
+  </header>
+  <!-- End Header Section -->
+
+  <!-- Main Section -->
+  <main id="main">
+    <div class="photograph-header" aria-label="Informations du photographe"></div>
+
+    <div class="select" role="search" aria-label="Bouton pour trier les photographes">
+      <h3>Trier Par</h3>
+      <select id="filterSelect" tabindex="1">
+        <option value="date">Date</option>
+        <option value="title">Nom</option>
+        <option value="popularity">Popularité</option>
+      </select>
+    </div>
+
+    <div class="photographer_info" aria-label="Galerie des photos"></div>
+
+    <!--Likes-->
+    <div class="likeContainer">
+      <div id="myLikes" class="myLike"></div>
+      <div id="likeHeart"></div>
+      <div id="price"></div>
+    </div>
+
+    <!-- Images Gallery -->
+    <div id="myModal" class="modal" aria-hidden="true" aria-describedby="carrousel">
+      <!-- The Close Button -->
+      <button class="close">&times;</button>
+
+      <!-- Modal Content (The Image) -->
+      <div class="modal-content">
+        <div class="carousel-container"></div>
+      </div>
+
+      <!-- Next/previous controls -->
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+
+      <!-- Modal Caption (Image Text) -->
+      <div id="caption"></div>
+    </div>
+
+    <!-- form -->
+    <div class="bground">
+      <div class="content">
+        <span class="close1"></span>
+        <div class="modal-body">
+          <h1 class="modalh2">Contactez-moi</h1>
+          <form name="reserve" action="index.html" id="formulaire">
+            <div class="formData" data-error-visible="false">
+              <label for="first">Prénom</label><br />
+              <input class="text-control" type="text" id="first" name="first" minlength="2" required /><br />
+            </div>
+            <div class="formData" data-error-visible="false">
+              <label for="last">Nom</label><br />
+              <input class="text-control" type="text" id="last" name="last" minlength="2" required /><br />
+            </div>
+            <div class="formData" data-error-visible="false">
+              <label for="email">E-mail</label><br />
+              <input class="text-control" type="email" id="email" name="email" required
+                pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" /><br />
+            </div>
+            <div class="formData" data-error-visible="false">
+              <label for="story">Votre Message</label>
+              <textarea id="story" name="story" rows="8" cols="52"></textarea>
+            </div>
+            <input class="btn-submit button" type="submit" value="Envoyer" />
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <!-- End Main Section -->
+
+  <!-- JS Files -->
+  <script type="module" src="scripts/utils/contactForm.js"></script>
+  <script type="module" src="scripts/pages/photographer.js"></script>
+  <script type="module" src="scripts/factories/page.js"></script>
+  <script src="https://kit.fontawesome.com/1f5306553e.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
