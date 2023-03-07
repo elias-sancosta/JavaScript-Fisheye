@@ -31,8 +31,14 @@ document.getElementById('formulaire').addEventListener('submit', validate);
 
 // Checking input before validating and sending form results
 function validate(e) {
-  e.preventDefault() // to prevent page from recharging
-  console.log ('form results', first.value, last.value, email.value, story.value); 
+  e.preventDefault(); // to prevent page from recharging
+  console.log(
+    'form results',
+    first.value,
+    last.value,
+    email.value,
+    story.value
+  );
   if (first.value == '' || first.value.length < 2) {
     formData[0].dataset.errorVisible = true;
     return false;
@@ -41,11 +47,11 @@ function validate(e) {
     formData[1].dataset.errorVisible = true;
     return false;
   }
-  if (email.value == '' ) {
+  if (email.value == '') {
     formData[2].dataset.errorVisible = true;
     return false;
   }
-  if (story.value == '' ) {
+  if (story.value == '') {
     formData[3].dataset.errorVisible = true;
     return false;
   } else {
@@ -89,13 +95,14 @@ function DataError(e) {
 
 // close the validation message
 
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modalbg) {
     modalbg.style.display = 'none';
   }
 };
+
 // Accessibility
-window.addEventListener('keydown', function(event) {
+window.addEventListener('keydown', function (event) {
   if (event.key === 'Escape') {
     modalbg.style.display = 'none';
   }
