@@ -1,11 +1,11 @@
-import {getNickname} from '../utils/index.js';
+import { getNickname } from '../utils/index.js';
 import mediaFactory from '../factories/media.js';
 const modal = document.getElementById('myModal');
 const likeIds = [];
 let currentSlide = 0;
 const nbMedias = 0;
 
-// Factory for Each photographers infos 
+// Factory for Each photographers infos
 
 export function getMediaDom(photographerMedia, photographer) {
   function getUserCardDOM() {
@@ -14,7 +14,7 @@ export function getMediaDom(photographerMedia, photographer) {
 
     for (var i = 0; i <= photographerMedia.length - 1; i++) {
       const elmt = photographerMedia[i];
-      const {likes, title} = elmt;
+      const { likes, title, alt } = elmt;
 
       // Likes counter
       const likesNumber = getLikesNumber(photographerMedia);
@@ -26,7 +26,7 @@ export function getMediaDom(photographerMedia, photographer) {
       phPrice.textContent = photographer.price + 'Euros' + '/' + 'jour';
 
       const picture = `Sample Photos/${getNickname(photographer.name)}/${
-          elmt.image ? elmt.image : elmt.video
+        elmt.image ? elmt.image : elmt.video
       }`;
       const mediaCard = document.createElement('a');
       mediaCard.setAttribute('id', 'myImg');
@@ -37,6 +37,8 @@ export function getMediaDom(photographerMedia, photographer) {
       if (elmt.image) {
         const img = document.createElement('img');
         img.setAttribute('src', picture);
+        img.setAttribute('alt', `Le nom de la photo est ${alt}`);
+
         media1 = img;
       } else if (elmt.video) {
         const video = document.createElement('video');
@@ -49,18 +51,19 @@ export function getMediaDom(photographerMedia, photographer) {
       }
 
       const modalContent = document.querySelector(
-          '.modal-content .carousel-container',
+        '.modal-content .carousel-container'
       );
-        // IIFE - Closure sur i qui permet de capturer l'index
+      // IIFE - Closure sur i qui permet de capturer l'index
       ((i) =>
-        media1.addEventListener('click', function() {
+        media1.addEventListener('click', function () {
           modalContent.innerHTML = '';
           const medias = photographerMedia.map((media) =>
-            mediaFactory(media, photographer.name),
+            mediaFactory(media, photographer.name)
           );
           medias.forEach((media) => {
-            const newDiv =
-              modalContent.appendChild(document.createElement('div'));
+            const newDiv = modalContent.appendChild(
+              document.createElement('div')
+            );
             newDiv.setAttribute('class', 'newDiv');
             newDiv.appendChild(media.htmlBlock);
             newDiv.appendChild(media.caption);
@@ -74,15 +77,16 @@ export function getMediaDom(photographerMedia, photographer) {
 
       // Same with enter
       ((i) =>
-        document.addEventListener('keypress', function(event) {
+        document.addEventListener('keypress', function (event) {
           if (event.keyCode == 13 && event.target.dataset.card == 'media') {
             modalContent.innerHTML = '';
             const medias = photographerMedia.map((media) =>
-              mediaFactory(media, photographer.name),
+              mediaFactory(media, photographer.name)
             );
             medias.forEach((media) => {
-              const newDiv =
-                modalContent.appendChild(document.createElement('div'));
+              const newDiv = modalContent.appendChild(
+                document.createElement('div')
+              );
               newDiv.setAttribute('class', 'newDiv');
               newDiv.appendChild(media.htmlBlock);
               newDiv.appendChild(media.caption);
@@ -114,7 +118,7 @@ export function getMediaDom(photographerMedia, photographer) {
         elmt.likes += 1;
         h3.textContent = elmt.likes;
         document.querySelector('#myLikes').textContent = `${getLikesNumber(
-            photographerMedia,
+          photographerMedia
         )}`;
       });
 
@@ -129,13 +133,13 @@ export function getMediaDom(photographerMedia, photographer) {
     return mediaCardContainer;
   }
 
-  return {getUserCardDOM};
+  return { getUserCardDOM };
 }
 
 // function to iterates likes from each photographer
 
 function getLikesNumber(photographerMedia) {
-  return photographerMedia.reduce(function(_this, val) {
+  return photographerMedia.reduce(function (_this, val) {
     return _this + val.likes;
   }, 0);
 }
@@ -148,5 +152,3 @@ function nextSlide() {
   }
   carousel.style.transform = `translateX(-${currentSlide * 500}px)`;
 }
-
-

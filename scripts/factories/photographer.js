@@ -70,6 +70,7 @@ export function getPhotographerDom(data) {
     myDiv3.setAttribute('class', 'myDiv2');
     const img = document.createElement('img');
     img.setAttribute('src', picture);
+    img.setAttribute('alt', portrait);
     theDiv.appendChild(myDiv1);
     myDiv1.appendChild(h2);
     myDiv1.appendChild(h3);

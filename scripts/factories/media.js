@@ -1,4 +1,4 @@
-import {getNickname} from '../utils/index.js';
+import { getNickname } from '../utils/index.js';
 
 // Get medias for the caroussel
 
@@ -19,7 +19,7 @@ export default function mediaFactory(data, photographerName) {
     source.setAttribute('src', picture);
     source.setAttribute('type', 'video/mp4');
     htmlBlock.appendChild(source);
-    htmlBlock.addEventListener('click', function() {
+    htmlBlock.addEventListener('click', function () {
       htmlBlock.setAttribute('play', true);
     });
   }
@@ -28,5 +28,5 @@ export default function mediaFactory(data, photographerName) {
   const caption = document.createElement('p');
   caption.innerHTML = data.title;
 
-  return {htmlBlock, caption};
+  return { htmlBlock, caption };
 }
