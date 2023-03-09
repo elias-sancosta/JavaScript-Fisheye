@@ -1,9 +1,9 @@
 const modalbg = document.querySelector('.bground');
 
-// Home Page factory 
+// Home Page factory
 
 export function photographerFactory(data) {
-  const {name, portrait, tagline, city, country, price, id} = data;
+  const { name, portrait, tagline, city, country, price, id } = data;
 
   const picture = `Sample Photos/Photographers ID Photos/${portrait}`;
 
@@ -13,7 +13,7 @@ export function photographerFactory(data) {
     article.href = '#';
     const img = document.createElement('img');
     img.setAttribute('src', picture);
-    img.setAttribute('alt', 'Photo de profil du photographe');
+    img.setAttribute('alt', `Photo de profil du photographe ${name}`);
     const h2 = document.createElement('h2');
     h2.textContent = name;
     const h3 = document.createElement('h3');
@@ -28,10 +28,10 @@ export function photographerFactory(data) {
     article.appendChild(h3);
     article.appendChild(my1p);
     article.appendChild(my2p);
-    article.addEventListener('click', function() {
+    article.addEventListener('click', function () {
       window.location.href = 'photographer.html?id=' + id;
     });
-    article.addEventListener('keypress', function(event) {
+    article.addEventListener('keypress', function (event) {
       // If the user presses the "Enter" key on the keyboard
       if (event.key === 'Enter') {
         window.location.href = 'photographer.html?id=' + id;
@@ -39,12 +39,12 @@ export function photographerFactory(data) {
     });
     return article;
   }
-  return {getUserCardDOM};
+  return { getUserCardDOM };
 }
 
 // Header Photographer's page Factory
 export function getPhotographerDom(data) {
-  const {name, portrait, tagline, city, country} = data;
+  const { name, portrait, tagline, city, country } = data;
   const picture = `Sample Photos/Photographers ID Photos/${portrait}`;
 
   function getUserCardDOM() {
@@ -80,6 +80,5 @@ export function getPhotographerDom(data) {
     return theDiv;
   }
 
-  return {getUserCardDOM};
+  return { getUserCardDOM };
 }
-
